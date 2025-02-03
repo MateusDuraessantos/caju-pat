@@ -12,7 +12,7 @@
 
   <section class="banner">
 
-    <div class="banner__header">
+    <div class="banner__header max__width">
       <img class="banner__logo" src="https://image.fala.caju.com.br/lib/fe3211737164047b701270/m/1/393e2177-4f72-4da7-867d-ca3d0b40c053.png" width="300" height="30" alt="">
     </div>
 
@@ -131,6 +131,29 @@
 :root {
   --red: #E80536;
   --orange: #FF7500;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #b14202;
+  border-radius: 6px;
+  border: 0px solid #cdcdcd;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 12px;
+    background-color: #cdcdcd;
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #cdcdcd;
+    border-radius: 6px;
+    border: 0px solid #cdcdcd;
+}
+
+::-webkit-scrollbar-corner {
+    background-color: transparent;
 }
   
 .max__width {
