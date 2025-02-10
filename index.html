@@ -299,6 +299,391 @@
     </div>
 </footer>
 
+<script>
+ document.querySelectorAll('.mdc-text-field-helper-line').forEach((item) => {
+    item.style.display = "none";
+})
+
+document.querySelectorAll('.mdc-select-helper-text').forEach((item) => {
+    item.style.display = "none"
+})
+const form = {}
+
+const textFieldNome = new mdc.textField.MDCTextField(document.querySelector('.mdc-nome'));
+textFieldNome.listen('input', (event) => {
+    form.nome = textFieldNome.value
+})
+document.querySelector('#nome').addEventListener("blur", (event) => {
+    if (!textFieldNome.valid) {
+        document.querySelector("#name-helper-text").style.display = "block";
+    } else {
+        document.querySelector("#name-helper-text").style.display = "none";
+    }
+})
+
+
+
+
+const textFieldEmail = new mdc.textField.MDCTextField(document.querySelector('.mdc-email'));
+textFieldEmail.listen('input', (event) => {
+
+    if (!(/^\S+@\S+\.\S+$/.test(event.target.value))) {
+        textFieldEmail.helperTextContent = 'E-mail é inválido'
+        return
+    }
+    form.email = event.target && event.target.value ? event.target.value : textFieldEmail.value
+
+})
+document.querySelector('#email').addEventListener("blur", (event) => {
+    if (!textFieldEmail.valid) {
+        document.querySelector("#email-helper-text").style.display = "block";
+    } else {
+        document.querySelector("#email-helper-text").style.display = "none"
+    }
+})
+
+
+
+
+const textFieldTelefone = new mdc.textField.MDCTextField(document.querySelector('.mdc-telefone'));
+const telefoneHelperText = new mdc.textField.MDCTextFieldHelperText(document.querySelector('#tele-helper-text'));
+
+textFieldTelefone.listen('input', (event) => {
+    let telefone = textFieldTelefone.value.replace(/\D/g, '');
+    if (/0{11}|1{11}|2{11}|3{11}|4{11}|5{11}|6{11}|7{11}|8{11}|9{11}/.test(telefone) ||
+        telefone.length < 10) {
+        textFieldTelefone.foundation.setValid(false)
+        telefoneHelperText.foundation.setContent('Telefone é inválido')
+    } else {
+        textFieldTelefone.foundation.setValid(true)
+        form.telefone = textFieldTelefone.value
+    }
+})
+
+document.querySelector('#telefone').addEventListener("blur", (event) => {
+
+    if (!textFieldTelefone.foundation.valid || !textFieldTelefone.valid) {
+        textFieldTelefone.valid = false
+        document.querySelector("#telefone-helper-text").style.display = "block"
+    } else {
+        document.querySelector("#telefone-helper-text").style.display = "none"
+    }
+})
+
+
+const textFieldEmpresa = new mdc.textField.MDCTextField(document.querySelector('.mdc-empresa'));
+textFieldEmpresa.listen('input', (event) => {
+    form.empresa = textFieldEmpresa.value
+})
+document.querySelector('#empresa').addEventListener("blur", (event) => {
+    if (!textFieldEmpresa.valid) {
+        document.querySelector("#empresa-helper-text").style.display = "block"
+    } else {
+        document.querySelector("#empresa-helper-text").style.display = "none"
+    }
+})
+
+
+const textFieldColaboradores = new mdc.textField.MDCTextField(document.querySelector('.mdc-colaboradores'));
+textFieldColaboradores.listen('input', (event) => {
+    form.colaboradores = textFieldColaboradores.value
+})
+document.querySelector("#colaboradores").addEventListener("blur", (event) => {
+    if (!textFieldColaboradores.valid) {
+        document.querySelector("#colab-helper-text").style.display = "block"
+    } else {
+        document.querySelector("#colab-helper-text").style.display = "none"
+    }
+})
+
+
+
+
+const helperText = new mdc.textField.MDCTextFieldHelperText(document.querySelector('.mdc-text-field-helper-text'))
+const ht = new mdc.select.MDCSelectHelperText(document.querySelector('.mdc-select-helper-text'));
+
+//inputs de opções
+/* const selectDesafio = new mdc.select.MDCSelect(document.querySelector('.mdc-select-desafio'));
+selectDesafio.useDefaultValidation = true
+selectDesafio.listen('MDCSelect:change', (itemDesafio) => {
+    form.desafioOption = itemDesafio.detail.value
+    document.querySelector('#desafio-helper-text').style.display = "none"
+});
+
+selectDesafio.foundation.handleBlur = () => {
+
+    if (selectDesafio.valid) {
+        document.querySelector('#desafio-helper-text').style.display = "none"
+    } else {
+        document.querySelector('#desafio-helper-text').style.display = "block"
+
+    }
+    this.isMenuOpen || this.blur()
+}
+ */
+
+
+const selectArea = new mdc.select.MDCSelect(document.querySelector('.mdc-select-area'));
+selectArea.listen('MDCSelect:change', (itemArea) => {
+    form.areaOption = itemArea.detail.value
+    document.querySelector('#area-helper-text').style.display = "none"
+});
+
+selectArea.foundation.handleBlur = () => {
+
+    if (selectArea.valid) {
+        document.querySelector('#area-helper-text').style.display = "none"
+    } else {
+        document.querySelector('#area-helper-text').style.display = "block"
+
+    }
+    this.isMenuOpen || this.blur()
+}
+/* 
+selectArea.listen('MDCSelect:blur', () => {
+   
+  
+}) */
+
+const selectCargo = new mdc.select.MDCSelect(document.querySelector('.mdc-select-cargo'));
+selectCargo.listen('MDCSelect:change', (itemCargo) => {
+    form.cargoOption = itemCargo.detail.value
+    document.querySelector('#cargo-helper-text').style.display = "none"
+});
+
+selectCargo.foundation.handleBlur = () => {
+
+    if (selectCargo.valid) {
+        document.querySelector('#cargo-helper-text').style.display = "none"
+    } else {
+        document.querySelector('#cargo-helper-text').style.display = "block"
+
+    }
+    this.isMenuOpen || this.blur()
+}
+
+
+
+
+
+document.getElementById('nome').addEventListener('input', (event) => {
+    // Remove todos os caracteres que não são letras
+    const regex = /[0-9]/g;
+    event.target.value = event.target.value.replace(regex, '').replace(/[!@#$%^&\(\)\_\=\+\-\¨\<\,\>\.\:\;\~\}\]\[\´\{\]/g, "");
+      /* event.target.value = _.deburr(event.target.value); */ 
+});
+document.getElementById('empresa').addEventListener('input', (event) => {
+ // Remove acentuacao usando a lib lodash
+     /* event.target.value = _.deburr(event.target.value); */
+});
+
+//input colaboradores, para não permitir letras/caracteres especiais e delimitar a quantidade de números inseridos
+function onlyNumber(input) {
+    input.value = input.value.replace(/[a-zA-Z]/g, "").replace(/\D/g, '')
+}
+function colabsValid(input) {
+    if (input.value < 1) {
+        input.value = ''
+        return
+    }
+    onlyNumber(input)
+}
+
+
+// Função para validar e formatar o campo de TELEFONE
+function handlePhone(event) {
+    let input = event.target
+    input.value = input.value.replace(/\D/g, '')
+    input.value = input.value.substring(0, 11);
+    input.value = phoneMask(input.value)
+}
+
+const phoneMask = (value) => {
+    if (!value) return ""
+    value = value.replace(/(\d{2})(\d)/, "($1) $2")
+    value = value.replace(/(\d)(\d{4})$/, "$1-$2")
+    return value
+}
+
+
+// Função para obter parâmetros UTM da URL
+function getUTMParameters() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const utmParameters = {};
+    utmParameters["str_utm_source"] = urlParams.get("utm_source") || "";
+    utmParameters["str_utm_medium"] = urlParams.get("utm_medium") || "";
+    utmParameters["str_utm_campaign"] = urlParams.get("utm_campaign") || "";
+    utmParameters["str_utm_term"] = urlParams.get("utm_term") || "";
+    return utmParameters;
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    let measurement_id__c = 'G-3RPJSREWE0'
+
+    let client_id__c = function get_ga_clientid() {
+        var cookie = {};
+        document.cookie.split(';').forEach(function (el) {
+            var splitCookie = el.split('=');
+            var key = splitCookie[0].trim();
+            var value = splitCookie[1];
+            cookie[key] = value;
+        });
+        return cookie["_ga"].substring(6);
+    }
+
+    var cookie = {};
+    document.cookie.split(';').forEach(function (el) {
+        var splitCookie = el.split('=');
+        var key = splitCookie[0].trim();
+        var value = splitCookie[1];
+        cookie[key] = value;
+    });
+    cookie["_ga"].substring(6)
+    function get_ga_clientid() {
+        var cookie = {};
+        document.cookie.split(';').forEach(function (el) {
+            var splitCookie = el.split('=');
+            var key = splitCookie[0].trim();
+            var value = splitCookie[1];
+            cookie[key] = value;
+        });
+        return cookie["_ga"].substring(6);
+    }
+
+
+    let botaoEnviar = document.getElementById("submitButton");
+    botaoEnviar.addEventListener("click", function (e) {
+        e.preventDefault();
+
+
+        // Formatar a data e hora no padrão brasileiro
+        let dataHoraFormatada = new Date().toLocaleString("pt-BR");
+
+        if (
+            !form.telefone ||
+            !form.nome ||
+            !form.email ||
+            !form.colaboradores ||
+            !form.empresa ||
+         /*    !form.desafioOption || */
+            !form.areaOption ||
+            !form.cargoOption
+
+        ) {
+            alert("Por favor, preencha todos os campos obrigatórios.");
+            return; // Impede o envio do formulário se houver algum campo vazio
+        }
+
+        const utmParameters = getUTMParameters()
+        const data = JSON.stringify({
+            str_lp_name: "Demonstrativo-V2",
+            str_user_name: form.nome,
+            str_email: form.email,
+            nr_phone: form.telefone.replace(/\D/g, ''),
+            str_company_name: form.empresa,
+            str_employees_number: form.colaboradores,
+            dt_created_date: dataHoraFormatada,
+            str_area: form.areaOption,
+            str_cargo: form.cargoOption,
+           /*  str_desafio: form.desafioOption, */
+            measurement_id_c: measurement_id_c,
+            client_id_c: client_id_c(),
+            dt_created_date: dataHoraFormatada,
+            ...utmParameters// Inclui os parâmetros UTM mapeados corretamente
+
+        });
+
+        fetch("#endpoint", {
+            method: "POST",
+            body: data,
+            headers: {
+                "Content-Type": "application/json; charset=utf-8"
+            }
+        })
+            .then(resposta => resposta.text())
+            .then((resposta) => {
+                const json = JSON.parse(resposta.replace("System.Collections.ArrayList", ""))
+                console.log(json)
+                if (json.statusCode === 200) {
+                    if (typeof dataLayer !== 'undefined') {
+                        dataLayer.push({ event: "003/001-001.059:018;001",             
+                                parameters: {
+                                    email_domain: domainEmail(form.email)
+                                }
+                         });
+                    }
+                    let modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('exampleModal')) //fechar o modal form
+                    // Show or hide:
+                    modal.hide();
+                    document.getElementById("img-bloqueio-video").style.display = "none"
+                    document.getElementById("video-desbloqueado").style.display = "flex"
+                    document.getElementById("video-desbloqueado").innerHTML = `<iframe class="iframe-video" src="https://www.youtube.com/embed/5AuU18f6vt0?si=cbYgiKWyO7iCn5QW&autoplay=1"
+                   title="YouTube video player" frameborder="0"
+                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                   referrerpolicy="strict-origin-when-cross-origin" allowfullscreen autoplay></iframe>`
+                    localStorage.setItem("formFill", true)
+                    document.getElementById('open-modal-btn').addEventListener('click',  ctas)
+                } else {
+                    alert("Erro ao inserir dados.");
+                }
+            }).catch(err => console.log(err));
+    });
+
+    if (localStorage.getItem("formFill")) {
+        document.getElementById('open-modal-btn').addEventListener('click',  ctas)
+        document.getElementById("img-bloqueio-video").style.display = "none"
+        document.getElementById("video-desbloqueado").style.display = "flex"
+        document.getElementById("video-desbloqueado").innerHTML = `<iframe class="iframe-video" src="https://www.youtube.com/embed/5AuU18f6vt0?si=cbYgiKWyO7iCn5QW"
+             title="YouTube video player" frameborder="0"
+             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen autoplay></iframe>`
+    }
+});
+
+ 
+
+function ctas(event) {
+    event.preventDefault()
+    let modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('exampleModal')) //fechar o modal form
+    modal.hide();
+    document.getElementById("video-desbloqueado").innerHTML = `<iframe class="iframe-video"  src="https://www.youtube.com/embed/5AuU18f6vt0?si=cbYgiKWyO7iCn5QW&autoplay=1"
+    title="YouTube video player" frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen autoplay></iframe>`
+}
+
+  //split email domain
+
+  function domainEmail(email) {
+    const dominios = [
+        'gmail.com',
+        'hotmail.com',
+        'outlook.com',
+        'yahoo.com',
+        'icloud.com',
+        'aol.com',
+        'live.com',
+        'protonmail.com',
+        'mail.com',
+        'gmx.com',
+        'zoho.com',
+        'me.com',
+        'yandex.com',
+        'msn.com',
+        'fastmail.com'
+    ]
+    let emailDomain = email.split('@')[1]
+    if (dominios.includes(emailDomain)) {
+        return 'personal'
+    } else {
+        return 'corp'
+    }
+
+}
+</script>
+
+
 </body>
 
 <style>
