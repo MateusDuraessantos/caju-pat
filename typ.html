@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      /* Estilos Globais ↑ */
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: Poppins;
+      }
+      :root {
+        --red: #e80537;
+        --orange: #ff7500;
+      }
+      body::-webkit-scrollbar-thumb {
+        background-color: #e80537;
+        border-radius: 6px;
+        border: 0px solid #f5f5f5;
+      }
+      ::-webkit-scrollbar {
+        width: 6px;
+        height: 12px;
+        background-color: #f5f5f5;
+        border-radius: 6px;
+      }
+      ::-webkit-scrollbar-thumb {
+        background-color: #cdcdcd;
+        border-radius: 6px;
+        border: 0px solid #f5f5f5;
+      }
+      ::-webkit-scrollbar-corner {
+        background-color: transparent;
+      }
+      .max__width {
+        max-width: 1000px;
+        width: calc(100% - 200px);
+      }
+      body {
+        background: white;
+        overflow-y: auto;
+        overflow-x: hidden;
+      }
+      .button__red {
+        color: white;
+        padding: 12px 16px;
+        font-weight: 700;
+        border-radius: 16px;
+        background: var(--red);
+        border: none;
+        width: max-content;
+      }
+      .caju__grafismo {
+        object-fit: contain;
+        height: 50px;
+        width: 50px;
+      }
+      /* Estilos Globais ↑ */
+
+      body {
+        background: var(--red);
+      }
+
+      /* Banner */
+
+      .banner {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: var(--red);
+        color: white;
+        padding: 114px 0 40px 0;
+        margin: auto;
+        text-align: center;
+        height: calc(100vh - 84px);
+        min-height: calc(100vh - 84px);
+      }
+      .banner__grafismos--1, .banner__grafismos--2 {
+        position: absolute;
+      }
+      .banner__grafismos--1 {
+        left: -2px;
+        top: -2px;
+        width: 400px;
+      }
+      .banner__grafismos--2 {
+        right: 0;
+        bottom: 0;
+        height: 70%;
+      }
+      .banner__column--1 {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        width: 100%;
+        color: white;
+      }
+      .banner__logo {
+        object-fit: contain;
+      }
+      h1 {
+        font-size: 36px;
+        font-weight: 600;
+        line-height: 50px;
+      }
+      .banner__header {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+        height: 64px;
+        width: calc(100% - 80px);
+        background: white;
+        z-index: 2;
+        top: 20px;
+        border-radius: 14px;
+      }
+      .banner__container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: column;
+        height: 100%;
+        gap: 30px;
+        max-height: 446px;
+        max-width: 562px;
+        width: 100%;
+        color: white;
+        z-index: 2;
+      }
+
+      .banner__p {
+        font-size: 18px;
+      }
+      
+      /* Redes */
+
+      .social-container {
+          text-align: center;
+          padding: 20px;
+          border-radius: 12px;
+          border: 1px solid var(--neutral-color-light-800, #E0E0E0);
+          background: var(--neutral-color-light-1000, #FAFAFA);
+          width: 425.26px;
+          height: 167.26px;
+      }
+
+      .social-container p {
+          margin-top: 20px;
+          color: var(--neutral-color-dark-100, #000);
+          text-align: center;
+          font-family: Inter;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: 140%;
+          /* 22.4px */
+      }
+
+      .social-icons {
+          display: flex;
+          justify-content: center;
+          gap: 10px;
+          margin-top: 15px;
+      }
+
+      .social-icons a {
+          display: inline-block;
+
+      }
+
+      .social {
+          width: 100%;
+          display: grid;
+          place-items: center;
+          padding-bottom: 140px;
+      }
+
+      .social-icons img {
+          width: 45px;
+          border-radius: 50%;
+      }
+
+      .footer-consideracao {
+          color: var(--neutral-color-medium-400, #767676);
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 160%;
+          margin: 0;
+      }
+
+      /* Footer */
+
+      footer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 84px;
+        color: #767676;
+        font-size: 14px;
+        background: #f4f4f4;
+        width: 100%;
+        z-index: 2;
+      }
+
+
+      @media screen and (max-width: 1000px) {
+        .max__width {
+          width: calc(100% - 60px);
+        }
+        .banner {
+          height: max-content;
+        }
+        .banner, .banner__container {
+          max-height: initial;
+        }
+        .banner__grafismos--1 {
+            width: 200px;
+        }
+        .banner__header {
+          width: calc(100% - 40px);
+        }
+        h1 {
+          font-size: 28px;
+          line-height: 36px;
+        }
+        .banner__container {
+          width: calc(100% - 40px);
+        }
+        .social-container {
+          padding: 16px;
+          width: 100%;
+        }
+        .social-icons img {
+          width: 40px;
+        }
+        .social-container p {
+          width: 100%;
+        }
+        .social-icons {
+          gap: 8px;
+        }
+        footer {
+          position: initial;
+        }
+      }
+
+    </style>
+
+
+  </head>
+  <body>
+    <section class="banner">
+
+      <img class="banner__grafismos--1" src="https://image.fala.caju.com.br/lib/fe3211737164047b701270/m/1/25226efc-2745-4ee9-87fb-d6e86d8a5a4b.png" loading="lazy" alt=""> 
+      <img class="banner__grafismos--2" src="https://image.fala.caju.com.br/lib/fe3211737164047b701270/m/1/0fba7c27-ab17-484a-a43b-59affe02bdd2.png" loading="lazy" alt=""> 
+  
+
+      <div class="banner__header">
+        <img
+          class="banner__logo"
+          src="https://image.fala.caju.com.br/lib/fe3211737164047b701270/m/1/393e2177-4f72-4da7-867d-ca3d0b40c053.png"
+          width="300"
+          height="30"
+          alt=""
+        />
+      </div>
+
+      <div class="banner__container">
+        <h1>Ei, agradecemos seu interesse em nosso conteúdo!</h1>
+
+        <p class="banner__p">O material solicitado está chegando no seu e-mail.</p>
+        <p class="banner__p"> 
+          Se não encontrar na sua caixa de entrada, é só dar uma olhadinha na
+          aba de promoções ou no spam, ok? :)
+        </p>
+
+        <div class="social-container">
+          <p>Acesse nossos pontos de contato</p>
+          <div class="social-icons">
+
+              <a data-hash="e_003_001_001_033_062_001" data-label="instagram"
+                  href="https://www.instagram.com/cajubeneficios/" target="_blank">
+                  <img src="https://image.fala.caju.com.br/lib/fe3211737164047b701270/m/1/c38ba6c5-3819-4477-b39a-4ac59a262db0.png"
+                      alt="instagram">
+              </a>
+              <a data-hash="e_003_001_001_033_062_001" data-label="linkedin"
+                  href="https://www.linkedin.com/company/cajubeneficios/" target="_blank">
+                  <img src="https://image.fala.caju.com.br/lib/fe3211737164047b701270/m/1/6d1a978b-db79-41f1-8b1e-4c63b92fed25.png"
+                      alt="linkedIn">
+              </a>
+              <a data-hash="e_003_001_001_033_062_001" data-label="facebook"
+                  href="https://web.facebook.com/cajubeneficios?_rdc=1&_rdr" target="_blank">
+                  <img src="https://image.fala.caju.com.br/lib/fe3211737164047b701270/m/1/797c39b3-8bd1-4ba4-920d-cc253da1c989.png"
+                      alt="facebook">
+              </a>
+              <a data-hash="e_003_001_001_033_062_001" data-label="youtube"
+                  href="https://www.youtube.com/c/cajubeneficios" target="_blank">
+                  <img src="https://image.fala.caju.com.br/lib/fe3211737164047b701270/m/1/1dab0527-c136-4f47-979a-a4dfe889be3d.png"
+                      alt="youTube">
+              </a>
+              <a data-hash="e_003_001_001_033_062_001" data-label="x" href="https://twitter.com/cajubeneficios"
+                  target="_blank">
+                  <img src="https://image.fala.caju.com.br/lib/fe3211737164047b701270/m/1/889df211-ba05-4a21-9380-48b6e5b0d102.png"
+                      alt="x">
+              </a>
+              <a data-hash="e_003_001_001_033_062_001" data-label="website" href="https://www.caju.com.br/"
+                  target="_blank">
+                  <img src="https://image.fala.caju.com.br/lib/fe3211737164047b701270/m/1/65c7e92c-c22e-4331-bb83-9ec800c1d792.png"
+                      alt="website">
+              </a>
+          </div>
+      </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>Feito com 🧡 pelos Cajuenses</p>
+    </footer>
+
+  
+  </body>
+</html>
