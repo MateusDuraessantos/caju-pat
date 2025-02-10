@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Thank you - Caju</title>
 
     <style>
       /* Estilos Globais ↑ */
@@ -76,11 +76,14 @@
         justify-content: center;
         background: var(--red);
         color: white;
-        padding: 114px 0 40px 0;
         margin: auto;
         text-align: center;
-        height: calc(100vh - 84px);
         min-height: calc(100vh - 84px);
+        padding-top: 60px;
+      }
+      .banner__check {
+        width: 115px;
+        height: 115px;
       }
       .banner__grafismos--1, .banner__grafismos--2 {
         position: absolute;
@@ -130,7 +133,6 @@
         flex-direction: column;
         height: 100%;
         gap: 30px;
-        max-height: 446px;
         max-width: 562px;
         width: 100%;
         color: white;
@@ -223,6 +225,10 @@
         .banner, .banner__container {
           max-height: initial;
         }
+        .banner__check {
+          width: 70px;
+          height: 70px;
+        }
         .banner__grafismos--1 {
             width: 200px;
         }
@@ -276,6 +282,7 @@
       </div>
 
       <div class="banner__container">
+        <img src="https://image.fala.caju.com.br/lib/fe3211737164047b701270/m/1/0e6a6056-e040-443b-a0fe-c916ca7dc914.png" class="banner__check" alt="">
         <h1>Ei, agradecemos seu interesse em nosso conteúdo!</h1>
 
         <p class="banner__p">O material solicitado está chegando no seu e-mail.</p>
